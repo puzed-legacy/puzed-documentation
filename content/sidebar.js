@@ -16,7 +16,7 @@ module.exports = function (h) {
         <li>
           <span>Architecture</span>
           <ul>
-            <li><a href="/api/architecture/collections">Collections</a></li>
+            <li><a href="/api/architecture/providers">Providers</a></li>
           </ul>
         </li>
       </ul>
