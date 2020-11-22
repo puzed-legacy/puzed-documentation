@@ -121,8 +121,9 @@ nav a,
 }
 
 @media (min-width: 600px) {
-  nav {
+  nav.bugerable {
     display: initial;
+    width: auto;
   }
 
   .user {
