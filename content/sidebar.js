@@ -14,11 +14,9 @@ module.exports = function (h) {
           </ul>
         </li>
         <li>
-          <span>Entities</span>
+          <span>Architecture</span>
           <ul>
-            <li><a href="/api/entities/databases">Databases</a></li>
-            <li><a href="/api/entities/collections">Collections</a></li>
-            <li><a href="/api/entities/records">Records</a></li>
+            <li><a href="/api/architecture/collections">Collections</a></li>
           </ul>
         </li>
       </ul>
