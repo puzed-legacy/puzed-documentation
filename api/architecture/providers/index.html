@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Records</title>
+    <title>Providers</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
@@ -54,46 +54,14 @@
           </ul>
         </li>
         <li>
-          <span>Entities</span>
+          <span>Architecture</span>
           <ul>
-            <li><a href="/api/entities/databases">Databases</a></li>
-            <li><a href="/api/entities/collections">Collections</a></li>
-            <li><a href="/api/entities/records">Records</a></li>
+            <li><a href="/api/architecture/collections">Collections</a></li>
           </ul>
         </li>
       </ul>
-    </sidebar><section><h1>Records<small></small></h1><div class="content-info"><a target="_blank" class="edit-page" href="https://github.com/bitabase/bitabase-documentation/blob/master/content/api/entities/records.md">Edit this page</a><em>Last updated: 2020-11-22</em></div><div><h2 id="what-are-records">What are records</h2>
-<p>Every collection holds onto records which are managed through the configuration you set when
-creating it originally.</p>
-<h2 id="available-methods">Available Methods</h2>
-<h3 id="search-through-records">Search through records</h3>
-<p>List all the records in a collection</p>
-<table>
-<tr><td><b>URL:</b></td> <td>https://YOUR-DATABASE.bitabase.net/:collectionName</td></tr>
-<tr><td><b>Method:</b></td> <td>GET</td></tr>
-<tr><td><b>Inputs:</b></td> <td><i>Not Applicable</i></td></tr>
-<tr><td><b>Outputs:</b></td> <td>Array of records</td></tr>
-<tr><td><b>Filtering:</b></td> <td>
-  <code><a href="filtering">?query={}</a></code>
-  <code>?fields=["dateCreated"]</code>
-</td></tr>
-<tr><td><b>Pagination:</b></td> <td>
-  <code><a href="pagination">?limit=10</a></code>
-  <code><a href="pagination">?offset=0</a></code>
-</td></tr>
-</table>
-
-<pre><code class="language-javascript">fetch(&#39;https://YOUR-DATABASE.bitabase.net/:collectionName&#39;, {
-  method: &#39;get&#39;
-})</code></pre>
-<p>Example Response:</p>
-<pre><code class="language-json">{
-  &quot;count&quot;: 1,
-  &quot;items&quot;: [{
-    &quot;id&quot;: &quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;,
-    &quot;name&quot;: &quot;test&quot;,
-  }]
-}</code></pre>
+    </sidebar><section><h1>Providers<small></small></h1><div class="content-info"><a target="_blank" class="edit-page" href="https://github.com/bitabase/bitabase-documentation/blob/master/content/api/architecture/providers.md">Edit this page</a><em>Last updated: 2020-11-22</em></div><div><h2 id="what-are-providers">What are providers</h2>
+<p>A provider is what drives the git repostiory aspects of Puzed.</p>
 </div><hr></section></div></div>
     </main>
   </body>
