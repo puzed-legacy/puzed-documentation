@@ -1,0 +1,148 @@
+<html>
+  <head>
+    <title>Installing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="http://127.0.0.1:9000/css/header.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/tomorrow.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script charset="UTF-8" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/javascript.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+    <base href="/" />
+
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="/img/logo.svg" class="logo-icon">
+          <img src="/img/logo-white.png" class="logo-name">
+        </a>
+      </div>
+      
+    <nav>
+      <a href="http://127.0.0.1:9000/">Home</a>
+      <a href="/" class="active">Docs</a>
+      <a href="/blog" false>Blog</a>
+    </nav>
+  
+    </header>
+
+    <main>
+      <div class="with-sidebar"><div class="content thin"><sidebar>
+      <ul>
+        <li>
+          <span>Developers</span>
+          <ul>
+            <li><a href="/">Introduction</a></li>
+            <li><a href="/guides/installing">Installing</a></li>
+          </ul>
+        </li>
+        <li>
+          <span>Entities</span>
+          <ul>
+            <li><a href="/api/entities/databases">Databases</a></li>
+            <li><a href="/api/entities/collections">Collections</a></li>
+            <li><a href="/api/entities/records">Records</a></li>
+          </ul>
+        </li>
+      </ul>
+    </sidebar><section><h1>Installing<small></small></h1><div class="content-info"><a target="_blank" class="edit-page" href="https://github.com/bitabase/bitabase-documentation/blob/master/content/guides/installing.md">Edit this page</a><em>Last updated: 2020-11-22</em></div><div><p>Puzed is still in the early days of development and as such the installation steps
+are geared around installing Puzed as a developer.</p>
+<p>In the future I would like to have a single docker image that will bring up the
+API, client and then run the setup script.</p>
+<p>For now can follow the instructions below.</p>
+<h3 id="setup-a-github-app">Setup a github app</h3>
+<p>Puzed has been built to be modular, allowing you to link with a variety of different
+git repository and management tools. But for now, the only &quot;provider&quot; we have is
+for GitHub, so you&#39;ll probably want to complete this step, even thought it&#39;s
+technically optional.</p>
+<p>To register a new app with GitHub go here:
+<a href="https://github.com/settings/apps/new">https://github.com/settings/apps/new</a></p>
+<p>Use the following options:</p>
+<p><strong>User authorization callback URL:</strong> <a href="https://YOUR_CLIENT_DOMAIN/providers/github/oauth">https://YOUR_CLIENT_DOMAIN/providers/github/oauth</a></p>
+<p><strong>Webhook URL:</strong> <a href="https://YOUR_API_DOMAIN/providers/github/webhookEndpoint">https://YOUR_API_DOMAIN/providers/github/webhookEndpoint</a></p>
+<p><strong>Permissions you need</strong>:</p>
+<ul>
+<li>Pull requests (readonly)</li>
+<li>Metadata (readonly)</li>
+<li>Commit status (readonly)</li>
+</ul>
+<p><strong>Tick these boxes at the bottom</strong>:</p>
+<ul>
+<li>Pull request</li>
+<li>Push</li>
+</ul>
+<h3 id="install-pm2">Install PM2</h3>
+<p>As you&#39;ll not want to keep your shell open forever, you need something to run
+the api and client as a background service. <a href="https://www.npmjs.com/package/pm2">PM2</a>
+is what I use to keep it running.</p>
+<pre><code class="language-bash">npm install --global pm2</code></pre>
+<h3 id="install-and-run-the-client">Install and run the Client</h3>
+<p>The web UI allows you to control the Puzed API server from a web browser.</p>
+<p>You will need <a href="https://github.com/nvm-sh/nvm">nodejs installed</a> on your host machine for this to work.</p>
+<pre><code class="language-bash">git clone https://github.com/puzed/puzed-client.git
+cd puzed-client
+npm install
+pm2 start --name puzed-client npm -- start</code></pre>
+<h3 id="install-the-api">Install the API</h3>
+<p>The API server is the main project that runs Puzed.</p>
+<pre><code class="language-bash">git clone https://github.com/puzed/puzed-api.git
+cd puzed-api
+npm install</code></pre>
+<h3 id="setup-the-database">Setup the database</h3>
+<p>Now you have an instance of Puzed up and running, you need to set it up.</p>
+<p>There is an installation script provided that will guide you through the inital setup.</p>
+<pre><code class="language-bash">./makeCerts.sh
+npm run setup</code></pre>
+<h4 id="what-domains-will-the-api-be-using-separate-with-commas">What domains will the API be using? (separate with commas)</h4>
+<p>How you will access the rest api to your puzed instance.</p>
+<p>Example: api.puzed.com</p>
+<h4 id="what-domains-will-the-web-client-be-using-separate-with-commas">What domains will the Web Client be using? (separate with commas)</h4>
+<p>How you will access the user interface (website) to your puzed instance.</p>
+<p>Example: puzed.com</p>
+<h4 id="what-acme-provider-would-you-like-to-use">What ACME provider would you like to use?</h4>
+<p>If you want to use LetsEncrypt you can select either the staging or production ACME provider, to automatically
+generate certificates for your services.</p>
+<p>If you are just running locally or testing, you can select <code>none</code> to use the default unsafe self signed certificates.</p>
+<h4 id="what-email-address-do-you-want-to-use-for-acme">What email address do you want to use for ACME?</h4>
+<p>If you want to use LetsEncrypt you must give them an email address.</p>
+<p>Example: <a href="mailto:&#121;&#111;&#117;&#x72;&#x40;&#x65;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;">&#121;&#111;&#117;&#x72;&#x40;&#x65;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;</a></p>
+<h4 id="would-you-like-to-setup-a-github-provider">Would you like to setup a GitHub provider?</h4>
+<p>If you want to be able to deploy straight from GitHub, you will need to create an app.</p>
+<p>Selecting yes to this question will ask you additional questions.</p>
+<h4 id="what-is-your-github-app-id">What is your GitHub App ID?</h4>
+<p>When you create your GitHub app they will give you an App ID:</p>
+<p>Example: 100000</p>
+<h4 id="what-is-your-github-client-id">What is your GitHub Client ID?</h4>
+<p>When you create your GitHub app they will give you a Client ID:</p>
+<p>Example: lv1.1a1a1a1a1a1a1a</p>
+<h4 id="what-is-your-github-client-secret">What is your GitHub Client Secret?</h4>
+<p>When you create your GitHub app they will give you a Client Secret:</p>
+<p>Example: 1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a</p>
+<h3 id="run-the-api">Run the API</h3>
+<pre><code class="language-bash">pm2 start --name puzed-api index.js</code></pre>
+<h3 id="after-setup">After setup</h3>
+<p>After running all the steps above you can login to your puzed instance and create an account.</p>
+<p>The following repl commands may help you:</p>
+<pre><code class="language-javascript">await db.patch(&#39;domains&#39;, { verificationStatus: &#39;success&#39; });
+await db.patch(&#39;users&#39;, { allowedServiceCreate: true });</code></pre>
+</div><hr></section></div></div>
+    </main>
+  </body>
+</html>
