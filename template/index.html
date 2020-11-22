@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="{{mainWebsiteUrl}}/css/header.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/tomorrow.min.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script charset="UTF-8" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/javascript.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre code').forEach((block) => {
+          hljs.highlightBlock(block);
+        });
+      });
+    </script>
+    <base href="/" />
+
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="/">
+          <img src="/img/logo.svg" class="logo-icon">
+          <img src="/img/logo-white.png" class="logo-name">
+        </a>
+      </div>
+      {{nav}}
+    </header>
+
+    <main>
+      {{content}}
+    </main>
+  </body>
+</html>
