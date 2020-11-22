@@ -20,7 +20,7 @@ const indexHtml = fs.readFileSync('template/index.html', 'utf8');
 
 function createPage (pathname, title, tree) {
   const nav = `
-    <nav>
+    <nav class="bugerable">
       <a href="${mainWebsiteUrl}/">Home</a>
       <a href="/" ${!pathname.startsWith('/blog') && 'class="active"'}>Docs</a>
       <a href="/blog" ${pathname.startsWith('/blog') && 'class="active"'}>Blog</a>

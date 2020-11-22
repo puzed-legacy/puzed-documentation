@@ -65,13 +65,14 @@ h1 > small {
 }
 
 .with-sidebar > * > :first-child {
-  display: none;
+  margin-top: -30px;
 }
 
 .with-sidebar > * > :last-child {
   flex-basis: 0;
   flex-grow: 999;
   min-width: calc(50% - 10px);
+  overflow-x: auto;
 }
 
 @media (min-width: 600px) {
@@ -188,4 +189,11 @@ pre > code {
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 20px;
+}
+
+
+@media (min-width: 600px) {
+  .with-sidebar > * > :first-child {
+    margin-top: 0;
+  }
 }
