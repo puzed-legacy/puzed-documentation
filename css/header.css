@@ -40,9 +40,17 @@ nav, section {
   padding-right: 10px;
 }
 
-nav {
+nav.bugerable {
+  flex-grow: 1;
   display: none;
   padding: 5px;
+
+  width: 100%;
+  flex-flow: column;
+}
+
+.burger-open nav.bugerable {
+  display: inherit;
 }
 
 header .logo a {
@@ -57,13 +65,12 @@ h2 {
 }
 
 header {
-  height: 60px;
-  white-space: nowrap;
-  overflow-x: auto;
+  padding: 5px;
   align-items: center;
   background: rgb(10,10,10);
   background: linear-gradient(90deg, rgba(10,10,10,1) 0%, rgb(19, 19, 19) 100%);
   display: flex;
+  flex-wrap: wrap;
   padding-left: 10px;
 }
 
@@ -83,10 +90,6 @@ header img.logo-name {
   vertical-align:middle;
 }
 
-nav {
-  flex-grow: 1;
-}
-
 nav a.active {
   background-color: rgba(255,255,255, 0.30);
 }
@@ -104,6 +107,19 @@ nav a,
   margin-right: 5px;
 }
 
+.header-brand {
+  display: flex;
+  flex-grow: 1;
+  min-height: 45px;
+  align-items: center;
+}
+
+.header-burger {
+  cursor: pointer;
+  fill: white;
+  margin-right: 7px;
+}
+
 @media (min-width: 600px) {
   nav {
     display: initial;
@@ -115,5 +131,13 @@ nav a,
 
   .user-buttons {
     display: initial;
+  }
+
+  .header-burger {
+    display: none;
+  }
+
+  .header-brand {
+    flex-grow: 0;
   }
 }
