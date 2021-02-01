@@ -101,24 +101,28 @@ technically optional.</p>
 <p>As you&#39;ll not want to keep your shell open forever, you need something to run
 the api and client as a background service. <a href="https://www.npmjs.com/package/pm2">PM2</a>
 is what I use to keep it running.</p>
-<pre><code class="language-bash">npm install --global pm2</code></pre>
+<pre><code class="language-bash">npm install --global pm2
+</code></pre>
 <h3 id="install-and-run-the-client">Install and run the Client</h3>
 <p>The web UI allows you to control the Puzed API server from a web browser.</p>
 <p>You will need <a href="https://github.com/nvm-sh/nvm">nodejs installed</a> on your host machine for this to work.</p>
 <pre><code class="language-bash">git clone https://github.com/puzed/puzed-client.git
 cd puzed-client
 npm install
-pm2 start --name puzed-client npm -- start</code></pre>
+pm2 start --name puzed-client npm -- start
+</code></pre>
 <h3 id="install-the-api">Install the API</h3>
 <p>The API server is the main project that runs Puzed.</p>
 <pre><code class="language-bash">git clone https://github.com/puzed/puzed-api.git
 cd puzed-api
-npm install</code></pre>
+npm install
+</code></pre>
 <h3 id="setup-the-database">Setup the database</h3>
 <p>Now you have an instance of Puzed up and running, you need to set it up.</p>
 <p>There is an installation script provided that will guide you through the inital setup.</p>
 <pre><code class="language-bash">./makeCerts.sh
-npm run setup</code></pre>
+npm run setup
+</code></pre>
 <h4 id="what-domains-will-the-api-be-using-separate-with-commas">What domains will the API be using? (separate with commas)</h4>
 <p>How you will access the rest api to your puzed instance.</p>
 <p>Example: api.puzed.com</p>
@@ -131,7 +135,7 @@ generate certificates for your services.</p>
 <p>If you are just running locally or testing, you can select <code>none</code> to use the default unsafe self signed certificates.</p>
 <h4 id="what-email-address-do-you-want-to-use-for-acme">What email address do you want to use for ACME?</h4>
 <p>If you want to use LetsEncrypt you must give them an email address.</p>
-<p>Example: <a href="mailto:&#121;&#x6f;&#117;&#114;&#x40;&#x65;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;">&#121;&#x6f;&#117;&#114;&#x40;&#x65;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>Example: <a href="mailto:&#121;&#x6f;&#117;&#114;&#x40;&#x65;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;">&#121;&#x6f;&#117;&#114;&#x40;&#x65;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <h4 id="would-you-like-to-setup-a-github-provider">Would you like to setup a GitHub provider?</h4>
 <p>If you want to be able to deploy straight from GitHub, you will need to create an app.</p>
 <p>Selecting yes to this question will ask you additional questions.</p>
@@ -145,12 +149,14 @@ generate certificates for your services.</p>
 <p>When you create your GitHub app they will give you a Client Secret:</p>
 <p>Example: 1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a</p>
 <h3 id="run-the-api">Run the API</h3>
-<pre><code class="language-bash">pm2 start --name puzed-api index.js</code></pre>
+<pre><code class="language-bash">pm2 start --name puzed-api index.js
+</code></pre>
 <h3 id="after-setup">After setup</h3>
 <p>After running all the steps above you can login to your puzed instance and create an account.</p>
 <p>The following repl commands may help you:</p>
 <pre><code class="language-javascript">await db.patch(&#39;domains&#39;, { verificationStatus: &#39;success&#39; });
-await db.patch(&#39;users&#39;, { allowedServiceCreate: true });</code></pre>
+await db.patch(&#39;users&#39;, { allowedServiceCreate: true });
+</code></pre>
 </div><hr></section></div></div>
     </main>
   </body>
