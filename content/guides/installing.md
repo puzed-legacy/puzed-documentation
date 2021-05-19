@@ -2,7 +2,7 @@
 id: install
 title: Installing
 sidebar_label: Installing
-lastModified: 2020-11-22
+lastModified: 2021-05-19
 ---
 
 Puzed is still in the early days of development and as such the installation steps
