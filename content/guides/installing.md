@@ -56,6 +56,7 @@ git clone https://github.com/puzed/puzed-client.git
 cd puzed-client
 npm install
 pm2 start --name puzed-client npm -- start
+cd ../
 ```
 
 ### Install the API
